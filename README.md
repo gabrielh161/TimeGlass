@@ -46,6 +46,10 @@ xcodebuild -project TimeGlass.xcodeproj -scheme TimeGlass -destination 'platform
 - **SwiftData** for local persistence — no server, no account, no sync.
 - A single `TimeTracker` type owns the `ModelContext` and enforces the app's core rule: at most one running time entry across all projects, at any moment.
 
+## Built with Claude
+
+Designed and built together with [Claude](https://claude.com) (Anthropic) — from the initial design mockup through the full SwiftUI/SwiftData implementation, code review, and this README.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
