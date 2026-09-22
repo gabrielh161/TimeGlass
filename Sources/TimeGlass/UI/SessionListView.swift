@@ -13,6 +13,9 @@ struct SessionListView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
+                Circle()
+                    .fill(ProjectColor.color(for: project))
+                    .frame(width: 10, height: 10)
                 Text(project.name).font(.headline)
                 Spacer()
                 Button("Fertig") { dismiss() }
@@ -24,6 +27,9 @@ struct SessionListView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             } else {
+                Text("Doppelklick auf eine Zeit, um sie zu ändern.")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(entries) { entry in
                         row(for: entry)
@@ -60,35 +66,19 @@ struct SessionListView: View {
     @ViewBuilder
     private func row(for entry: TimeEntry) -> some View {
         HStack(spacing: 8) {
-            DatePicker(
-                "Start",
-                selection: Binding(
-                    get: { entry.start },
-                    set: { newValue in
-                        if tracker.updateEntry(entry, start: newValue, end: entry.end) {
-                            reload()
-                        }
-                    }
-                ),
-                displayedComponents: [.date, .hourAndMinute]
-            )
-            .labelsHidden()
+            EditableTimeText(value: entry.start, tint: ProjectColor.color(for: project)) { newValue in
+                if tracker.updateEntry(entry, start: newValue, end: entry.end) {
+                    reload()
+                }
+            }
 
             if let end = entry.end {
                 Text("–").foregroundStyle(.secondary)
-                DatePicker(
-                    "Ende",
-                    selection: Binding(
-                        get: { end },
-                        set: { newValue in
-                            if tracker.updateEntry(entry, start: entry.start, end: newValue) {
-                                reload()
-                            }
-                        }
-                    ),
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-                .labelsHidden()
+                EditableTimeText(value: end, tint: ProjectColor.color(for: project)) { newValue in
+                    if tracker.updateEntry(entry, start: entry.start, end: newValue) {
+                        reload()
+                    }
+                }
             } else {
                 PulsingDot()
                 Text("läuft")

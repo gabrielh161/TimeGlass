@@ -40,7 +40,7 @@ struct SummaryView: View {
                     }
                     GeometryReader { geometry in
                         RoundedRectangle(cornerRadius: 3)
-                            .fill(.tint)
+                            .fill(ProjectColor.color(for: row.project))
                             .frame(width: geometry.size.width * max(row.seconds / maxSeconds, 0.03), height: 5)
                     }
                     .frame(height: 5)

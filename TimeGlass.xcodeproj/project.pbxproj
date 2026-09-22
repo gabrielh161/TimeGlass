@@ -26,6 +26,8 @@
 		D9EDDB1A08A0FF990E2D5269 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0913C4729BFCACED85A84AB /* HeaderView.swift */; };
 		DF2B9C990BEA591A1D40319B /* DurationFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */; };
 		F89972A7482495E564BF290A /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43BA402C9490D4D334CC45 /* SmokeTests.swift */; };
+		FA584E1B8084FCED524F6E94 /* ProjectColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EEB1C17C791F6241F54F3 /* ProjectColor.swift */; };
+		8A8477BD04745A8A2E2E2B26 /* EditableTimeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677638F75B0B228D445C9F49 /* EditableTimeText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		D5BEC3ED7CD94BC9B36230F6 /* MenuBarLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarLabelView.swift; sourceTree = "<group>"; };
 		DE9D896058ED0EEACE9F206C /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		FE609591825292D61C1D95E9 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
+		533EEB1C17C791F6241F54F3 /* ProjectColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectColor.swift; sourceTree = "<group>"; };
+		677638F75B0B228D445C9F49 /* EditableTimeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -105,6 +109,8 @@
 				90F2A803FAB68801AC7DDD31 /* PulsingDot.swift */,
 				D5A44FF9C9DD5B39425A676B /* SessionListView.swift */,
 				38EA963C107A1D09EF1AD572 /* SummaryView.swift */,
+				533EEB1C17C791F6241F54F3 /* ProjectColor.swift */,
+				677638F75B0B228D445C9F49 /* EditableTimeText.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -248,6 +254,8 @@
 				CE33A6B49DFF540D87DE0BAB /* TimeEntry.swift in Sources */,
 				1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */,
 				86FB40D45E4D47AF26E44A46 /* TimeTracker.swift in Sources */,
+				FA584E1B8084FCED524F6E94 /* ProjectColor.swift in Sources */,
+				8A8477BD04745A8A2E2E2B26 /* EditableTimeText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

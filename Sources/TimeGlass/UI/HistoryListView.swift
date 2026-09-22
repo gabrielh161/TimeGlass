@@ -26,22 +26,27 @@ struct HistoryListView: View {
     private func row(for project: Project) -> some View {
         let isActive = activeEntry?.project?.id == project.id
         HStack {
+            Circle()
+                .fill(ProjectColor.color(for: project))
+                .frame(width: 8, height: 8)
             Text(project.name)
                 .lineLimit(1)
                 .contentShape(Rectangle())
                 .onTapGesture { sessionsProject = project }
             Spacer()
-            if isActive, let entry = activeEntry {
-                TimelineView(.periodic(from: entry.start, by: 1)) { context in
-                    Text(DurationFormatting.format(tracker.totalSeconds(for: project, since: SummaryPeriod.today.startDate(), now: context.date)))
-                        .monospacedDigit()
-                        .foregroundStyle(.secondary)
+            Group {
+                if isActive, let entry = activeEntry {
+                    TimelineView(.periodic(from: entry.start, by: 1)) { context in
+                        Text(DurationFormatting.format(tracker.totalSeconds(for: project, since: SummaryPeriod.today.startDate(), now: context.date)))
+                    }
+                } else {
+                    Text(DurationFormatting.format(tracker.totalSeconds(for: project, since: SummaryPeriod.today.startDate())))
                 }
-            } else {
-                Text(DurationFormatting.format(tracker.totalSeconds(for: project, since: SummaryPeriod.today.startDate())))
-                    .monospacedDigit()
-                    .foregroundStyle(.secondary)
             }
+            .monospacedDigit()
+            .foregroundStyle(.secondary)
+            .contentShape(Rectangle())
+            .onTapGesture(count: 2) { sessionsProject = project }
 
             if pendingDeleteID == project.id {
                 Button("Abbrechen") { pendingDeleteID = nil }

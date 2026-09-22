@@ -8,7 +8,14 @@ struct PillButtonStyle: ButtonStyle {
             .font(.subheadline.weight(.semibold))
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
-            .background(tint.opacity(configuration.isPressed ? 0.75 : 1), in: Capsule())
+            .background(
+                LinearGradient(
+                    colors: [tint.opacity(configuration.isPressed ? 0.7 : 0.95), tint],
+                    startPoint: .top,
+                    endPoint: .bottom
+                ),
+                in: Capsule()
+            )
             .foregroundStyle(.white)
     }
 }

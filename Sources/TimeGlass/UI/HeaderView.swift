@@ -20,7 +20,8 @@ struct HeaderView: View {
     }
 
     private func runningView(entry: TimeEntry, projectName: String) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        let tint = entry.project.map { ProjectColor.color(for: $0) } ?? .accentColor
+        return VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 6) {
                 PulsingDot()
                 Text("Läuft")
@@ -28,13 +29,15 @@ struct HeaderView: View {
             .font(.caption.weight(.bold))
             .foregroundStyle(.green)
             HStack {
+                Circle()
+                    .fill(tint)
+                    .frame(width: 10, height: 10)
                 Text(projectName).font(.headline)
                 Spacer()
-                TimelineView(.periodic(from: entry.start, by: 1)) { context in
-                    Text(DurationFormatting.format(context.date.timeIntervalSince(entry.start)))
-                        .font(.system(.title2, design: .monospaced))
-                        .monospacedDigit()
+                EditableElapsedTimeText(start: entry.start, tint: tint) { newStart in
+                    tracker.updateEntry(entry, start: newStart, end: nil)
                 }
+                .foregroundStyle(tint)
             }
             Button("Stop") {
                 tracker.stopActiveEntry()
