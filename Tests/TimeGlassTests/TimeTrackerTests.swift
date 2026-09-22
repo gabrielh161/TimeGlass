@@ -111,4 +111,95 @@ final class TimeTrackerTests: XCTestCase {
         let openEntries = try container.mainContext.fetch(descriptor)
         XCTAssertEqual(openEntries.count, 1)
     }
+
+    func testEntriesForProjectFiltersBySinceAndSortsNewestFirst() throws {
+        let base = Date()
+        let entry = tracker.start(projectNamed: "Sessions", now: base)
+        tracker.stopActiveEntry(now: base.addingTimeInterval(60))
+        let project = try XCTUnwrap(entry.project)
+        tracker.restart(project, now: base.addingTimeInterval(3600))
+        tracker.stopActiveEntry(now: base.addingTimeInterval(3700))
+
+        let all = tracker.entries(for: project, since: base.addingTimeInterval(-1))
+        XCTAssertEqual(all.count, 2)
+        XCTAssertEqual(all.first?.start, base.addingTimeInterval(3600))
+
+        let filtered = tracker.entries(for: project, since: base.addingTimeInterval(1800))
+        XCTAssertEqual(filtered.count, 1)
+    }
+
+    func testUpdateEntryChangesStartAndEnd() throws {
+        let base = Date()
+        let entry = tracker.start(projectNamed: "Fix Me", now: base)
+        tracker.stopActiveEntry(now: base.addingTimeInterval(600))
+        let newStart = base.addingTimeInterval(-1800)
+        let newEnd = base.addingTimeInterval(-1200)
+        let ok = tracker.updateEntry(entry, start: newStart, end: newEnd)
+        XCTAssertTrue(ok)
+        XCTAssertEqual(entry.start, newStart)
+        XCTAssertEqual(entry.end, newEnd)
+    }
+
+    func testUpdateEntryRejectsEndBeforeStart() throws {
+        let base = Date()
+        let entry = tracker.start(projectNamed: "Bad Range", now: base)
+        tracker.stopActiveEntry(now: base.addingTimeInterval(600))
+        let originalStart = entry.start
+        let originalEnd = entry.end
+        let ok = tracker.updateEntry(entry, start: base, end: base.addingTimeInterval(-100))
+        XCTAssertFalse(ok)
+        XCTAssertEqual(entry.start, originalStart)
+        XCTAssertEqual(entry.end, originalEnd)
+    }
+
+    func testUpdateEntryCanAdjustActiveEntryStart() throws {
+        let base = Date()
+        let entry = tracker.start(projectNamed: "Active Fix", now: base)
+        let newStart = base.addingTimeInterval(-300)
+        let ok = tracker.updateEntry(entry, start: newStart, end: nil)
+        XCTAssertTrue(ok)
+        XCTAssertEqual(entry.start, newStart)
+        XCTAssertNil(entry.end)
+    }
+
+    func testUpdateEntryRejectsReopeningClosedEntry() throws {
+        let base = Date()
+        let entry = tracker.start(projectNamed: "No Reopen", now: base)
+        tracker.stopActiveEntry(now: base.addingTimeInterval(600))
+        let ok = tracker.updateEntry(entry, start: base, end: nil)
+        XCTAssertFalse(ok)
+        XCTAssertNotNil(entry.end)
+    }
+
+    func testAddManualEntryCreatesClosedEntry() throws {
+        let entry = tracker.start(projectNamed: "Manual")
+        let project = try XCTUnwrap(entry.project)
+        tracker.stopActiveEntry()
+        let start = Date().addingTimeInterval(-7200)
+        let end = Date().addingTimeInterval(-3600)
+        let ok = tracker.addManualEntry(to: project, start: start, end: end)
+        XCTAssertTrue(ok)
+        let entries = tracker.entries(for: project, since: start.addingTimeInterval(-1))
+        XCTAssertTrue(entries.contains { $0.start == start && $0.end == end })
+    }
+
+    func testAddManualEntryRejectsEndBeforeStart() throws {
+        let entry = tracker.start(projectNamed: "Manual Bad")
+        let project = try XCTUnwrap(entry.project)
+        tracker.stopActiveEntry()
+        let ok = tracker.addManualEntry(to: project, start: Date(), end: Date().addingTimeInterval(-100))
+        XCTAssertFalse(ok)
+    }
+
+    func testDeleteEntryRemovesJustThatEntry() throws {
+        let base = Date()
+        let entry = tracker.start(projectNamed: "Delete One", now: base)
+        tracker.stopActiveEntry(now: base.addingTimeInterval(60))
+        let project = try XCTUnwrap(entry.project)
+        tracker.restart(project, now: base.addingTimeInterval(120))
+        tracker.stopActiveEntry(now: base.addingTimeInterval(180))
+        XCTAssertEqual(tracker.entries(for: project, since: base.addingTimeInterval(-1)).count, 2)
+        tracker.deleteEntry(entry)
+        XCTAssertEqual(tracker.entries(for: project, since: base.addingTimeInterval(-1)).count, 1)
+    }
 }

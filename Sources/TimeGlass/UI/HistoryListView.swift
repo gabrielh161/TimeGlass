@@ -6,9 +6,10 @@ struct HistoryListView: View {
     let projects: [Project]
     let activeEntry: TimeEntry?
     @State private var pendingDeleteID: PersistentIdentifier?
+    @State private var sessionsProject: Project?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 6) {
             Text("Verlauf")
                 .font(.caption.weight(.bold))
                 .foregroundStyle(.secondary)
@@ -16,13 +17,19 @@ struct HistoryListView: View {
                 row(for: project)
             }
         }
+        .sheet(item: $sessionsProject) { project in
+            SessionListView(tracker: tracker, project: project)
+        }
     }
 
     @ViewBuilder
     private func row(for project: Project) -> some View {
         let isActive = activeEntry?.project?.id == project.id
         HStack {
-            Text(project.name).lineLimit(1)
+            Text(project.name)
+                .lineLimit(1)
+                .contentShape(Rectangle())
+                .onTapGesture { sessionsProject = project }
             Spacer()
             if isActive, let entry = activeEntry {
                 TimelineView(.periodic(from: entry.start, by: 1)) { context in
@@ -47,9 +54,7 @@ struct HistoryListView: View {
                 }
                 .buttonStyle(.borderless)
             } else if isActive {
-                Image(systemName: "circle.fill")
-                    .foregroundStyle(.green)
-                    .font(.caption2)
+                PulsingDot(size: 6)
                 Button {
                     pendingDeleteID = project.id
                 } label: {

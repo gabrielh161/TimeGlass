@@ -55,6 +55,36 @@ final class TimeTracker {
         }
     }
 
+    func entries(for project: Project, since start: Date) -> [TimeEntry] {
+        project.entries
+            .filter { $0.start >= start }
+            .sorted { $0.start > $1.start }
+    }
+
+    @discardableResult
+    func updateEntry(_ entry: TimeEntry, start: Date, end: Date?) -> Bool {
+        if let end, end <= start { return false }
+        if end == nil, entry.end != nil { return false }
+        entry.start = start
+        entry.end = end
+        try? context.save()
+        return true
+    }
+
+    @discardableResult
+    func addManualEntry(to project: Project, start: Date, end: Date) -> Bool {
+        guard end > start else { return false }
+        let entry = TimeEntry(project: project, start: start, end: end)
+        context.insert(entry)
+        try? context.save()
+        return true
+    }
+
+    func deleteEntry(_ entry: TimeEntry) {
+        context.delete(entry)
+        try? context.save()
+    }
+
     private func findProject(named name: String) -> Project? {
         let all = (try? context.fetch(FetchDescriptor<Project>())) ?? []
         return all.first { $0.name.caseInsensitiveCompare(name) == .orderedSame }

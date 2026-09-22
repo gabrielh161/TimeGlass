@@ -11,15 +11,18 @@
 		1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */; };
 		265FB83EE429C26756A7C59C /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA963C107A1D09EF1AD572 /* SummaryView.swift */; };
 		34BA6F07B7BD283AD67386BF /* MenuBarLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BEC3ED7CD94BC9B36230F6 /* MenuBarLabelView.swift */; };
+		4FB3EBEE1672F3C36DA31DC3 /* PulsingDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F2A803FAB68801AC7DDD31 /* PulsingDot.swift */; };
 		6E130F7E18BADA798163F8C7 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E249F9BC590E49C568CD2D /* HistoryListView.swift */; };
 		6EC0DEF342DC350DFE59EA1E /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C16390FB39AEF9C502F2B /* LoginItemManager.swift */; };
 		70EF6EFE313DC686D4D52F7A /* SummaryPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */; };
+		72676FAA1A65D62935F1C969 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A44FF9C9DD5B39425A676B /* SessionListView.swift */; };
 		7B51570731D4152E426835DF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE609591825292D61C1D95E9 /* PopoverView.swift */; };
 		86FB40D45E4D47AF26E44A46 /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */; };
 		A235CB328A2C9DE02858E8D8 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D896058ED0EEACE9F206C /* Project.swift */; };
 		B1D8AABF680A3E61567F8B83 /* DurationFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */; };
 		CE33A6B49DFF540D87DE0BAB /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */; };
 		D1B39307BFF9076467CA50E1 /* TimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CFFE8172DA2048E0DE073 /* TimeTrackerTests.swift */; };
+		D2B62D1E65F7EC7386F733AF /* PillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2793A426806E7911947E3B7A /* PillButtonStyle.swift */; };
 		D9EDDB1A08A0FF990E2D5269 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0913C4729BFCACED85A84AB /* HeaderView.swift */; };
 		DF2B9C990BEA591A1D40319B /* DurationFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */; };
 		F89972A7482495E564BF290A /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43BA402C9490D4D334CC45 /* SmokeTests.swift */; };
@@ -38,6 +41,7 @@
 /* Begin PBXFileReference section */
 		031C16390FB39AEF9C502F2B /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
 		0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
+		2793A426806E7911947E3B7A /* PillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButtonStyle.swift; sourceTree = "<group>"; };
 		28FB6AA0FB5E98BFCFD2D0CC /* SummaryPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPeriodTests.swift; sourceTree = "<group>"; };
 		2A43BA402C9490D4D334CC45 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		38EA963C107A1D09EF1AD572 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
@@ -45,12 +49,14 @@
 		5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormattingTests.swift; sourceTree = "<group>"; };
 		5B9CFFE8172DA2048E0DE073 /* TimeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerTests.swift; sourceTree = "<group>"; };
 		6321E17609B40A2A409FCD45 /* TimeGlassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeGlassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90F2A803FAB68801AC7DDD31 /* PulsingDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingDot.swift; sourceTree = "<group>"; };
 		9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGlassApp.swift; sourceTree = "<group>"; };
 		A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatting.swift; sourceTree = "<group>"; };
 		BEAF260D174E72A9AE26E268 /* TimeGlass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeGlass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0913C4729BFCACED85A84AB /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPeriod.swift; sourceTree = "<group>"; };
 		C9E249F9BC590E49C568CD2D /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
+		D5A44FF9C9DD5B39425A676B /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		D5BEC3ED7CD94BC9B36230F6 /* MenuBarLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarLabelView.swift; sourceTree = "<group>"; };
 		DE9D896058ED0EEACE9F206C /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		FE609591825292D61C1D95E9 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
@@ -94,7 +100,10 @@
 				C0913C4729BFCACED85A84AB /* HeaderView.swift */,
 				C9E249F9BC590E49C568CD2D /* HistoryListView.swift */,
 				D5BEC3ED7CD94BC9B36230F6 /* MenuBarLabelView.swift */,
+				2793A426806E7911947E3B7A /* PillButtonStyle.swift */,
 				FE609591825292D61C1D95E9 /* PopoverView.swift */,
+				90F2A803FAB68801AC7DDD31 /* PulsingDot.swift */,
+				D5A44FF9C9DD5B39425A676B /* SessionListView.swift */,
 				38EA963C107A1D09EF1AD572 /* SummaryView.swift */,
 			);
 			path = UI;
@@ -229,8 +238,11 @@
 				6E130F7E18BADA798163F8C7 /* HistoryListView.swift in Sources */,
 				6EC0DEF342DC350DFE59EA1E /* LoginItemManager.swift in Sources */,
 				34BA6F07B7BD283AD67386BF /* MenuBarLabelView.swift in Sources */,
+				D2B62D1E65F7EC7386F733AF /* PillButtonStyle.swift in Sources */,
 				7B51570731D4152E426835DF /* PopoverView.swift in Sources */,
 				A235CB328A2C9DE02858E8D8 /* Project.swift in Sources */,
+				4FB3EBEE1672F3C36DA31DC3 /* PulsingDot.swift in Sources */,
+				72676FAA1A65D62935F1C969 /* SessionListView.swift in Sources */,
 				70EF6EFE313DC686D4D52F7A /* SummaryPeriod.swift in Sources */,
 				265FB83EE429C26756A7C59C /* SummaryView.swift in Sources */,
 				CE33A6B49DFF540D87DE0BAB /* TimeEntry.swift in Sources */,

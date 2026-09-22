@@ -7,18 +7,26 @@ struct HeaderView: View {
     @State private var projectName: String = ""
 
     var body: some View {
-        if let entry = activeEntry, let project = entry.project {
-            runningView(entry: entry, projectName: project.name)
-        } else {
-            idleView
+        Group {
+            if let entry = activeEntry, let project = entry.project {
+                runningView(entry: entry, projectName: project.name)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+            } else {
+                idleView
+                    .transition(.opacity)
+            }
         }
+        .animation(.easeInOut(duration: 0.25), value: activeEntry?.id)
     }
 
     private func runningView(entry: TimeEntry, projectName: String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Label("Läuft", systemImage: "circle.fill")
-                .font(.caption.weight(.bold))
-                .foregroundStyle(.green)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                PulsingDot()
+                Text("Läuft")
+            }
+            .font(.caption.weight(.bold))
+            .foregroundStyle(.green)
             HStack {
                 Text(projectName).font(.headline)
                 Spacer()
@@ -31,13 +39,12 @@ struct HeaderView: View {
             Button("Stop") {
                 tracker.stopActiveEntry()
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.red)
+            .buttonStyle(.pill(tint: .red))
         }
     }
 
     private var idleView: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Neues Projekt")
                 .font(.caption.weight(.bold))
                 .foregroundStyle(.secondary)
@@ -53,7 +60,7 @@ struct HeaderView: View {
                     tracker.start(projectNamed: projectName)
                     projectName = ""
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.pill)
                 .disabled(projectName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
             if !suggestions.isEmpty {
