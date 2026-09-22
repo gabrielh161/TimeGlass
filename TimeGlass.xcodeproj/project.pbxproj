@@ -10,7 +10,11 @@
 		0304CDB69ACE5220B1A5C5F9 /* SummaryPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB6AA0FB5E98BFCFD2D0CC /* SummaryPeriodTests.swift */; };
 		1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */; };
 		70EF6EFE313DC686D4D52F7A /* SummaryPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */; };
+		86FB40D45E4D47AF26E44A46 /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */; };
+		A235CB328A2C9DE02858E8D8 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D896058ED0EEACE9F206C /* Project.swift */; };
 		B1D8AABF680A3E61567F8B83 /* DurationFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */; };
+		CE33A6B49DFF540D87DE0BAB /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */; };
+		D1B39307BFF9076467CA50E1 /* TimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CFFE8172DA2048E0DE073 /* TimeTrackerTests.swift */; };
 		DF2B9C990BEA591A1D40319B /* DurationFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */; };
 		F89972A7482495E564BF290A /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43BA402C9490D4D334CC45 /* SmokeTests.swift */; };
 /* End PBXBuildFile section */
@@ -26,14 +30,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
 		28FB6AA0FB5E98BFCFD2D0CC /* SummaryPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPeriodTests.swift; sourceTree = "<group>"; };
 		2A43BA402C9490D4D334CC45 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
+		4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
 		5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormattingTests.swift; sourceTree = "<group>"; };
+		5B9CFFE8172DA2048E0DE073 /* TimeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerTests.swift; sourceTree = "<group>"; };
 		6321E17609B40A2A409FCD45 /* TimeGlassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeGlassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGlassApp.swift; sourceTree = "<group>"; };
 		A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatting.swift; sourceTree = "<group>"; };
 		BEAF260D174E72A9AE26E268 /* TimeGlass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeGlass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPeriod.swift; sourceTree = "<group>"; };
+		DE9D896058ED0EEACE9F206C /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -50,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */,
+				E9A4FE3D6154C17D6E75BD4C /* Models */,
 				64F7BCE64D383DD282C02E85 /* Tracking */,
 			);
 			name = TimeGlass;
@@ -70,6 +79,7 @@
 			children = (
 				A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */,
 				C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */,
+				4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -80,9 +90,19 @@
 				5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */,
 				2A43BA402C9490D4D334CC45 /* SmokeTests.swift */,
 				28FB6AA0FB5E98BFCFD2D0CC /* SummaryPeriodTests.swift */,
+				5B9CFFE8172DA2048E0DE073 /* TimeTrackerTests.swift */,
 			);
 			name = TimeGlassTests;
 			path = Tests/TimeGlassTests;
+			sourceTree = "<group>";
+		};
+		E9A4FE3D6154C17D6E75BD4C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE9D896058ED0EEACE9F206C /* Project.swift */,
+				0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +182,7 @@
 				B1D8AABF680A3E61567F8B83 /* DurationFormattingTests.swift in Sources */,
 				F89972A7482495E564BF290A /* SmokeTests.swift in Sources */,
 				0304CDB69ACE5220B1A5C5F9 /* SummaryPeriodTests.swift in Sources */,
+				D1B39307BFF9076467CA50E1 /* TimeTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,8 +191,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF2B9C990BEA591A1D40319B /* DurationFormatting.swift in Sources */,
+				A235CB328A2C9DE02858E8D8 /* Project.swift in Sources */,
 				70EF6EFE313DC686D4D52F7A /* SummaryPeriod.swift in Sources */,
+				CE33A6B49DFF540D87DE0BAB /* TimeEntry.swift in Sources */,
 				1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */,
+				86FB40D45E4D47AF26E44A46 /* TimeTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
