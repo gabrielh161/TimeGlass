@@ -7,6 +7,7 @@ struct TimeGlassApp: App {
 
     init() {
         container = try! ModelContainer(for: Project.self, TimeEntry.self)
+        LoginItemManager.registerIfNeeded()
     }
 
     var body: some Scene {

@@ -12,6 +12,7 @@
 		265FB83EE429C26756A7C59C /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA963C107A1D09EF1AD572 /* SummaryView.swift */; };
 		34BA6F07B7BD283AD67386BF /* MenuBarLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BEC3ED7CD94BC9B36230F6 /* MenuBarLabelView.swift */; };
 		6E130F7E18BADA798163F8C7 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E249F9BC590E49C568CD2D /* HistoryListView.swift */; };
+		6EC0DEF342DC350DFE59EA1E /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C16390FB39AEF9C502F2B /* LoginItemManager.swift */; };
 		70EF6EFE313DC686D4D52F7A /* SummaryPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */; };
 		7B51570731D4152E426835DF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE609591825292D61C1D95E9 /* PopoverView.swift */; };
 		86FB40D45E4D47AF26E44A46 /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		031C16390FB39AEF9C502F2B /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
 		0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
 		28FB6AA0FB5E98BFCFD2D0CC /* SummaryPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPeriodTests.swift; sourceTree = "<group>"; };
 		2A43BA402C9490D4D334CC45 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */,
+				6BF30E24A45769F060962233 /* LoginItem */,
 				E9A4FE3D6154C17D6E75BD4C /* Models */,
 				64F7BCE64D383DD282C02E85 /* Tracking */,
 				5342F71E525A9028F70B3BD7 /* UI */,
@@ -105,6 +108,14 @@
 				4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */,
 			);
 			path = Tracking;
+			sourceTree = "<group>";
+		};
+		6BF30E24A45769F060962233 /* LoginItem */ = {
+			isa = PBXGroup;
+			children = (
+				031C16390FB39AEF9C502F2B /* LoginItemManager.swift */,
+			);
+			path = LoginItem;
 			sourceTree = "<group>";
 		};
 		A8D68F6D1001DEBFB144EBEC /* TimeGlassTests */ = {
@@ -216,6 +227,7 @@
 				DF2B9C990BEA591A1D40319B /* DurationFormatting.swift in Sources */,
 				D9EDDB1A08A0FF990E2D5269 /* HeaderView.swift in Sources */,
 				6E130F7E18BADA798163F8C7 /* HistoryListView.swift in Sources */,
+				6EC0DEF342DC350DFE59EA1E /* LoginItemManager.swift in Sources */,
 				34BA6F07B7BD283AD67386BF /* MenuBarLabelView.swift in Sources */,
 				7B51570731D4152E426835DF /* PopoverView.swift in Sources */,
 				A235CB328A2C9DE02858E8D8 /* Project.swift in Sources */,
