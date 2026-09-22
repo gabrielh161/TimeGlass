@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */; };
+		B1D8AABF680A3E61567F8B83 /* DurationFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */; };
+		DF2B9C990BEA591A1D40319B /* DurationFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */; };
 		F89972A7482495E564BF290A /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43BA402C9490D4D334CC45 /* SmokeTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,8 +25,10 @@
 
 /* Begin PBXFileReference section */
 		2A43BA402C9490D4D334CC45 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
+		5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormattingTests.swift; sourceTree = "<group>"; };
 		6321E17609B40A2A409FCD45 /* TimeGlassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeGlassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGlassApp.swift; sourceTree = "<group>"; };
+		A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatting.swift; sourceTree = "<group>"; };
 		BEAF260D174E72A9AE26E268 /* TimeGlass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeGlass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -42,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */,
+				64F7BCE64D383DD282C02E85 /* Tracking */,
 			);
 			name = TimeGlass;
 			path = Sources/TimeGlass;
@@ -56,9 +61,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		64F7BCE64D383DD282C02E85 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
 		A8D68F6D1001DEBFB144EBEC /* TimeGlassTests */ = {
 			isa = PBXGroup;
 			children = (
+				5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */,
 				2A43BA402C9490D4D334CC45 /* SmokeTests.swift */,
 			);
 			name = TimeGlassTests;
@@ -139,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D8AABF680A3E61567F8B83 /* DurationFormattingTests.swift in Sources */,
 				F89972A7482495E564BF290A /* SmokeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2B9C990BEA591A1D40319B /* DurationFormatting.swift in Sources */,
 				1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
