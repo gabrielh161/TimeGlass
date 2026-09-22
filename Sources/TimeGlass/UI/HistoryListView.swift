@@ -36,11 +36,7 @@ struct HistoryListView: View {
                     .foregroundStyle(.secondary)
             }
 
-            if isActive {
-                Image(systemName: "circle.fill")
-                    .foregroundStyle(.green)
-                    .font(.caption2)
-            } else if pendingDeleteID == project.id {
+            if pendingDeleteID == project.id {
                 Button("Abbrechen") { pendingDeleteID = nil }
                     .buttonStyle(.borderless)
                 Button(role: .destructive) {
@@ -48,6 +44,16 @@ struct HistoryListView: View {
                     pendingDeleteID = nil
                 } label: {
                     Image(systemName: "checkmark")
+                }
+                .buttonStyle(.borderless)
+            } else if isActive {
+                Image(systemName: "circle.fill")
+                    .foregroundStyle(.green)
+                    .font(.caption2)
+                Button {
+                    pendingDeleteID = project.id
+                } label: {
+                    Image(systemName: "xmark")
                 }
                 .buttonStyle(.borderless)
             } else {
