@@ -3,6 +3,7 @@ import SwiftUI
 struct HeaderView: View {
     let tracker: TimeTracker
     let activeEntry: TimeEntry?
+    let projects: [Project]
     @State private var projectName: String = ""
 
     var body: some View {
@@ -43,6 +44,11 @@ struct HeaderView: View {
             HStack {
                 TextField("Projekt eingeben…", text: $projectName)
                     .textFieldStyle(.roundedBorder)
+                    .onSubmit {
+                        guard !projectName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+                        tracker.start(projectNamed: projectName)
+                        projectName = ""
+                    }
                 Button("Start") {
                     tracker.start(projectNamed: projectName)
                     projectName = ""
@@ -50,6 +56,30 @@ struct HeaderView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(projectName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
+            if !suggestions.isEmpty {
+                HStack(spacing: 6) {
+                    ForEach(suggestions) { project in
+                        Button(project.name) {
+                            projectName = project.name
+                        }
+                        .buttonStyle(.borderless)
+                        .font(.caption)
+                    }
+                }
+            }
         }
+    }
+
+    private var suggestions: [Project] {
+        let trimmed = projectName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return [] }
+        return Array(
+            projects
+                .filter {
+                    $0.name.localizedCaseInsensitiveContains(trimmed)
+                        && $0.name.localizedCaseInsensitiveCompare(trimmed) != .orderedSame
+                }
+                .prefix(3)
+        )
     }
 }

@@ -27,12 +27,14 @@ final class TimeTracker {
         }()
         let entry = TimeEntry(project: project, start: now)
         context.insert(entry)
+        try? context.save()
         return entry
     }
 
     func stopActiveEntry(now: Date = .now) {
         guard let entry = activeEntry() else { return }
         entry.end = now
+        try? context.save()
     }
 
     func restart(_ project: Project, now: Date = .now) {
@@ -41,6 +43,7 @@ final class TimeTracker {
 
     func delete(_ project: Project) {
         context.delete(project)
+        try? context.save()
     }
 
     func totalSeconds(for project: Project, since start: Date, now: Date = .now) -> TimeInterval {

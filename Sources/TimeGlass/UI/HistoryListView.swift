@@ -26,7 +26,7 @@ struct HistoryListView: View {
             Spacer()
             if isActive, let entry = activeEntry {
                 TimelineView(.periodic(from: entry.start, by: 1)) { context in
-                    Text(DurationFormatting.format(context.date.timeIntervalSince(entry.start)))
+                    Text(DurationFormatting.format(tracker.totalSeconds(for: project, since: SummaryPeriod.today.startDate(), now: context.date)))
                         .monospacedDigit()
                         .foregroundStyle(.secondary)
                 }

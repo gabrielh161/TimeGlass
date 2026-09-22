@@ -80,4 +80,35 @@ final class TimeTrackerTests: XCTestCase {
         )
         XCTAssertEqual(total, 120, accuracy: 0.01)
     }
+
+    func testRestartCreatesNewRunningEntryForSameProject() throws {
+        let base = Date()
+        let first = tracker.start(projectNamed: "Restart Me", now: base)
+        tracker.stopActiveEntry(now: base.addingTimeInterval(60))
+        let project = try XCTUnwrap(first.project)
+        tracker.restart(project, now: base.addingTimeInterval(120))
+        let active = tracker.activeEntry()
+        XCTAssertNotNil(active)
+        XCTAssertEqual(active?.project?.name, "Restart Me")
+        XCTAssertEqual(active?.start, base.addingTimeInterval(120))
+    }
+
+    func testDeletingActiveProjectClearsActiveEntry() throws {
+        let entry = tracker.start(projectNamed: "Active Delete")
+        let project = try XCTUnwrap(entry.project)
+        XCTAssertNotNil(tracker.activeEntry())
+        tracker.delete(project)
+        XCTAssertNil(tracker.activeEntry())
+    }
+
+    func testAtMostOneActiveEntryAfterStartRestartStartSequence() throws {
+        let base = Date()
+        let first = tracker.start(projectNamed: "One", now: base)
+        let firstProject = try XCTUnwrap(first.project)
+        tracker.restart(firstProject, now: base.addingTimeInterval(60))
+        _ = tracker.start(projectNamed: "Two", now: base.addingTimeInterval(120))
+        let descriptor = FetchDescriptor<TimeEntry>(predicate: #Predicate { $0.end == nil })
+        let openEntries = try container.mainContext.fetch(descriptor)
+        XCTAssertEqual(openEntries.count, 1)
+    }
 }
