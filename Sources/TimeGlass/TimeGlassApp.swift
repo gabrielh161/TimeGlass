@@ -1,13 +1,21 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct TimeGlassApp: App {
+    let container: ModelContainer
+
+    init() {
+        container = try! ModelContainer(for: Project.self, TimeEntry.self)
+    }
+
     var body: some Scene {
         MenuBarExtra {
-            Text("TimeGlass")
+            PopoverView()
         } label: {
-            Image(systemName: "timer")
+            MenuBarLabelView()
         }
         .menuBarExtraStyle(.window)
+        .modelContainer(container)
     }
 }
