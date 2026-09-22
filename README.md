@@ -2,6 +2,11 @@
 
 A tiny native macOS menu-bar time tracker. Click the icon, type a project name, hit Start. It ticks live in the menu bar, keeps a history you can restart or delete from, and shows today/week totals per project — all in a Liquid Glass popup, no windows, no Dock icon.
 
+<p align="center">
+  <img src="docs/screenshots/idle.png" width="45%" alt="TimeGlass idle state: project input with autocomplete suggestions, history, and today/week summary">
+  <img src="docs/screenshots/running.png" width="45%" alt="TimeGlass running state: live-ticking timer, Stop button, history, and summary">
+</p>
+
 ## Features
 
 - **Menu bar only** — no Dock icon, no separate app window. The current project and elapsed time show right in the menu bar while a timer runs.
