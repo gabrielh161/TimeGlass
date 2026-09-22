@@ -14,6 +14,8 @@ struct PopoverView: View {
             HeaderView(tracker: tracker, activeEntry: activeEntries.first)
             Divider()
             HistoryListView(tracker: tracker, projects: projects, activeEntry: activeEntries.first)
+            Divider()
+            SummaryView(tracker: tracker, projects: projects)
         }
         .padding(18)
         .frame(width: 320)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0304CDB69ACE5220B1A5C5F9 /* SummaryPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB6AA0FB5E98BFCFD2D0CC /* SummaryPeriodTests.swift */; };
 		1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9689D5803A7CA1E70CD04444 /* TimeGlassApp.swift */; };
+		265FB83EE429C26756A7C59C /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA963C107A1D09EF1AD572 /* SummaryView.swift */; };
 		34BA6F07B7BD283AD67386BF /* MenuBarLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BEC3ED7CD94BC9B36230F6 /* MenuBarLabelView.swift */; };
 		6E130F7E18BADA798163F8C7 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E249F9BC590E49C568CD2D /* HistoryListView.swift */; };
 		70EF6EFE313DC686D4D52F7A /* SummaryPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */; };
@@ -37,6 +38,7 @@
 		0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
 		28FB6AA0FB5E98BFCFD2D0CC /* SummaryPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPeriodTests.swift; sourceTree = "<group>"; };
 		2A43BA402C9490D4D334CC45 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
+		38EA963C107A1D09EF1AD572 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
 		5589F6A2290CCAFF082221E2 /* DurationFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormattingTests.swift; sourceTree = "<group>"; };
 		5B9CFFE8172DA2048E0DE073 /* TimeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackerTests.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				C9E249F9BC590E49C568CD2D /* HistoryListView.swift */,
 				D5BEC3ED7CD94BC9B36230F6 /* MenuBarLabelView.swift */,
 				FE609591825292D61C1D95E9 /* PopoverView.swift */,
+				38EA963C107A1D09EF1AD572 /* SummaryView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				7B51570731D4152E426835DF /* PopoverView.swift in Sources */,
 				A235CB328A2C9DE02858E8D8 /* Project.swift in Sources */,
 				70EF6EFE313DC686D4D52F7A /* SummaryPeriod.swift in Sources */,
+				265FB83EE429C26756A7C59C /* SummaryView.swift in Sources */,
 				CE33A6B49DFF540D87DE0BAB /* TimeEntry.swift in Sources */,
 				1312B41DAE3D0699DE3C539F /* TimeGlassApp.swift in Sources */,
 				86FB40D45E4D47AF26E44A46 /* TimeTracker.swift in Sources */,
