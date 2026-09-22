@@ -45,7 +45,7 @@ final class TimeTracker {
 
     func totalSeconds(for project: Project, since start: Date, now: Date = .now) -> TimeInterval {
         project.entries.reduce(0) { partial, entry in
-            let end = entry.end ?? now
+            let end = min(entry.end ?? now, now)
             let clampedStart = max(entry.start, start)
             guard end > clampedStart else { return partial }
             return partial + end.timeIntervalSince(clampedStart)

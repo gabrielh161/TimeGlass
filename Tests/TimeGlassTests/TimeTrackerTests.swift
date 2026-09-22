@@ -65,4 +65,19 @@ final class TimeTrackerTests: XCTestCase {
         tracker.stopActiveEntry()
         XCTAssertNil(tracker.activeEntry())
     }
+
+    func testTotalSecondsClampsUpperBound() throws {
+        let base = Date()
+        // Create an entry that runs from base to base+600 (10 minutes)
+        let entry = tracker.start(projectNamed: "Z", now: base)
+        tracker.stopActiveEntry(now: base.addingTimeInterval(600))
+        let project = try XCTUnwrap(entry.project)
+        // Query with now: base+120 — should only count 120 seconds, not the full 600
+        let total = tracker.totalSeconds(
+            for: project,
+            since: base,
+            now: base.addingTimeInterval(120)
+        )
+        XCTAssertEqual(total, 120, accuracy: 0.01)
+    }
 }
