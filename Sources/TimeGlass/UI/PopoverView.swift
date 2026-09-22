@@ -12,6 +12,8 @@ struct PopoverView: View {
         let tracker = TimeTracker(context: modelContext)
         VStack(alignment: .leading, spacing: 15) {
             HeaderView(tracker: tracker, activeEntry: activeEntries.first)
+            Divider()
+            HistoryListView(tracker: tracker, projects: projects, activeEntry: activeEntries.first)
         }
         .padding(18)
         .frame(width: 320)
