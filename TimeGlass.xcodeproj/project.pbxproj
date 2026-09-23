@@ -32,6 +32,10 @@
 		3B8DF6B0E021015B69063D1F /* ProjectEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */; };
 		AD54558400121920F744C992 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CA7461D784607A37128D1A /* AppSettings.swift */; };
 		CF931D5B35DBF72AC754D6DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E8811F872E9640E028837 /* SettingsView.swift */; };
+		773E4A1E7B728131C8528C60 /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2CF2CA511E7CA713F032C /* ToastCenter.swift */; };
+		D2B0C3FC3A112B1E6D47DF13 /* ToastWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8A3B58B846A2413A8FF25 /* ToastWindowController.swift */; };
+		2065143351562F2EB5DF167C /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BD72DB8A42355E24B4C982 /* ToastView.swift */; };
+		6311873C50A2129A3E1C336C /* IdleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E381FB00CA72B602F101919 /* IdleDetector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditSheet.swift; sourceTree = "<group>"; };
 		98CA7461D784607A37128D1A /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		334E8811F872E9640E028837 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5EE2CF2CA511E7CA713F032C /* ToastCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastCenter.swift; sourceTree = "<group>"; };
+		05C8A3B58B846A2413A8FF25 /* ToastWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastWindowController.swift; sourceTree = "<group>"; };
+		42BD72DB8A42355E24B4C982 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		9E381FB00CA72B602F101919 /* IdleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -121,6 +129,7 @@
 				677638F75B0B228D445C9F49 /* EditableTimeText.swift */,
 				A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */,
 				334E8811F872E9640E028837 /* SettingsView.swift */,
+				42BD72DB8A42355E24B4C982 /* ToastView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -132,6 +141,9 @@
 				C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */,
 				4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */,
 				98CA7461D784607A37128D1A /* AppSettings.swift */,
+				5EE2CF2CA511E7CA713F032C /* ToastCenter.swift */,
+				05C8A3B58B846A2413A8FF25 /* ToastWindowController.swift */,
+				9E381FB00CA72B602F101919 /* IdleDetector.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -272,6 +284,10 @@
 				3B8DF6B0E021015B69063D1F /* ProjectEditSheet.swift in Sources */,
 				AD54558400121920F744C992 /* AppSettings.swift in Sources */,
 				CF931D5B35DBF72AC754D6DD /* SettingsView.swift in Sources */,
+				773E4A1E7B728131C8528C60 /* ToastCenter.swift in Sources */,
+				D2B0C3FC3A112B1E6D47DF13 /* ToastWindowController.swift in Sources */,
+				2065143351562F2EB5DF167C /* ToastView.swift in Sources */,
+				6311873C50A2129A3E1C336C /* IdleDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

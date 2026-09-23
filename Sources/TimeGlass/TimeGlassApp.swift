@@ -9,6 +9,7 @@ struct TimeGlassApp: App {
         container = try! ModelContainer(for: Project.self, TimeEntry.self, Client.self)
         LoginItemManager.registerIfNeeded()
         _ = ToastWindowController.shared
+        IdleDetector.shared.activate(with: container.mainContext)
     }
 
     var body: some Scene {
