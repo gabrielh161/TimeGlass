@@ -28,6 +28,7 @@ final class TimeTracker {
         let entry = TimeEntry(project: project, start: now)
         context.insert(entry)
         try? context.save()
+        ToastCenter.post(title: "\(project.name) gestartet", systemImage: "play.fill", tint: ProjectColor.color(for: project))
         return entry
     }
 
@@ -35,6 +36,9 @@ final class TimeTracker {
         guard let entry = activeEntry() else { return }
         entry.end = now
         try? context.save()
+        if let project = entry.project {
+            ToastCenter.post(title: "\(project.name) gestoppt", systemImage: "stop.fill", tint: ProjectColor.color(for: project))
+        }
     }
 
     func restart(_ project: Project, now: Date = .now) {

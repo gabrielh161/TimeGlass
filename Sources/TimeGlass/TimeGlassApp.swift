@@ -8,6 +8,7 @@ struct TimeGlassApp: App {
     init() {
         container = try! ModelContainer(for: Project.self, TimeEntry.self, Client.self)
         LoginItemManager.registerIfNeeded()
+        _ = ToastWindowController.shared
     }
 
     var body: some Scene {
