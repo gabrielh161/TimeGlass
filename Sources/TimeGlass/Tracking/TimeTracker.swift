@@ -55,6 +55,12 @@ final class TimeTracker {
         }
     }
 
+    /// Sum of tracked seconds across all given projects since `start` - used for the daily
+    /// goal concept (menu bar progress, remaining-time label, progress ring, etc.).
+    func totalSecondsAcrossProjects(_ projects: [Project], since start: Date, now: Date = .now) -> TimeInterval {
+        projects.reduce(0) { $0 + totalSeconds(for: $1, since: start, now: now) }
+    }
+
     func entries(for project: Project, since start: Date) -> [TimeEntry] {
         project.entries
             .filter { $0.start >= start }
