@@ -41,6 +41,30 @@ final class TimeTracker {
         }
     }
 
+    /// Pauses the running session: a short interruption within the same logical work block,
+    /// represented simply as closing the current entry (identical storage-wise to stopping).
+    /// The distinction is purely UX: pausing is expected to be resumed shortly via
+    /// `mostRecentProject()` / the "Fortsetzen" quick action, rather than being a deliberate
+    /// end of work. No schema change needed - the existing start/end model already supports
+    /// this once "resume" is just starting a fresh entry for the same project.
+    func pause(now: Date = .now) {
+        guard let entry = activeEntry() else { return }
+        let project = entry.project
+        entry.end = now
+        try? context.save()
+        if let project {
+            ToastCenter.post(title: "\(project.name) pausiert", systemImage: "pause.fill", tint: ProjectColor.color(for: project))
+        }
+    }
+
+    /// The project of the most recently started entry, regardless of whether it's still
+    /// running, was paused, or was stopped - used for the "Fortsetzen" quick action.
+    func mostRecentProject() -> Project? {
+        var descriptor = FetchDescriptor<TimeEntry>(sortBy: [SortDescriptor(\.start, order: .reverse)])
+        descriptor.fetchLimit = 1
+        return (try? context.fetch(descriptor))?.first?.project
+    }
+
     func restart(_ project: Project, now: Date = .now) {
         start(projectNamed: project.name, now: now)
     }

@@ -21,7 +21,9 @@ struct HeaderView: View {
     }
 
     private func runningView(entry: TimeEntry, projectName: String) -> some View {
-        let tint = entry.project.map { ProjectColor.color(for: $0) } ?? .accentColor
+        let project = entry.project
+        let tint = project.map { ProjectColor.color(for: $0) } ?? .accentColor
+        let countdownBudget = (settings.countdownMode ? project?.budgetHours : nil)
         return VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 6) {
                 PulsingDot()
@@ -35,20 +37,46 @@ struct HeaderView: View {
                     .frame(width: 10, height: 10)
                 Text(projectName).font(.headline)
                 Spacer()
-                EditableElapsedTimeText(start: entry.start, tint: tint) { newStart in
-                    tracker.updateEntry(entry, start: newStart, end: nil)
+                if let project, let budget = countdownBudget {
+                    TimelineView(.periodic(from: entry.start, by: 1)) { context in
+                        let remaining = budget * 3600 - tracker.totalSeconds(for: project, since: .distantPast, now: context.date)
+                        Text(remaining > 0 ? DurationFormatting.format(remaining) : "Budget voll")
+                            .font(.system(.title2, design: .monospaced))
+                            .monospacedDigit()
+                            .foregroundStyle(remaining > 0 ? tint : .red)
+                    }
+                } else {
+                    EditableElapsedTimeText(start: entry.start, tint: tint) { newStart in
+                        tracker.updateEntry(entry, start: newStart, end: nil)
+                    }
+                    .foregroundStyle(tint)
                 }
-                .foregroundStyle(tint)
             }
-            Button("Stop") {
-                tracker.stopActiveEntry()
+            HStack(spacing: 8) {
+                Button {
+                    tracker.pause()
+                } label: {
+                    Label("Pause", systemImage: "pause.fill")
+                }
+                .buttonStyle(.pill(tint: .orange))
+                Button("Stop") {
+                    tracker.stopActiveEntry()
+                }
+                .buttonStyle(.pill(tint: .red))
             }
-            .buttonStyle(.pill(tint: .red))
         }
     }
 
     private var idleView: some View {
         VStack(alignment: .leading, spacing: 10) {
+            if let last = tracker.mostRecentProject(), last.name != projectName {
+                Button {
+                    tracker.restart(last)
+                } label: {
+                    Label("Fortsetzen: \(last.name)", systemImage: "play.fill")
+                }
+                .buttonStyle(.pill(tint: ProjectColor.color(for: last)))
+            }
             Text("Neues Projekt")
                 .font(.caption.weight(.bold))
                 .foregroundStyle(.secondary)
