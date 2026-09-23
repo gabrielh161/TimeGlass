@@ -10,6 +10,7 @@ struct TimeGlassApp: App {
         LoginItemManager.registerIfNeeded()
         _ = ToastWindowController.shared
         IdleDetector.shared.activate(with: container.mainContext)
+        NotificationManager.shared.requestAuthorizationIfNeeded()
     }
 
     var body: some Scene {

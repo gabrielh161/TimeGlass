@@ -24,6 +24,8 @@ final class IdleDetector: NSObject {
         let workspaceCenter = NSWorkspace.shared.notificationCenter
         workspaceCenter.addObserver(self, selector: #selector(pauseIfRunning), name: NSWorkspace.screensDidSleepNotification, object: nil)
         workspaceCenter.addObserver(self, selector: #selector(pauseIfRunning), name: NSWorkspace.sessionDidResignActiveNotification, object: nil)
+        workspaceCenter.addObserver(self, selector: #selector(handleUnlock), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
+        workspaceCenter.addObserver(self, selector: #selector(handleUnlock), name: NSWorkspace.screensDidWakeNotification, object: nil)
 
         let distributed = DistributedNotificationCenter.default()
         distributed.addObserver(self, selector: #selector(pauseIfRunning), name: Notification.Name("com.apple.screenIsLocked"), object: nil)
@@ -37,5 +39,13 @@ final class IdleDetector: NSObject {
 
     @objc private func pauseIfRunning() {
         tracker?.pause()
+    }
+
+    /// First unlock/wake while no timer is running triggers the (once-per-day) morning
+    /// reminder notification, if enabled in Settings.
+    @objc private func handleUnlock() {
+        guard AppSettings.shared.morningReminderEnabled else { return }
+        guard let tracker, tracker.activeEntry() == nil else { return }
+        NotificationManager.shared.maybeSendMorningReminder()
     }
 }

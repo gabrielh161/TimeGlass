@@ -29,6 +29,7 @@ final class TimeTracker {
         context.insert(entry)
         try? context.save()
         ToastCenter.post(title: "\(project.name) gestartet", systemImage: "play.fill", tint: ProjectColor.color(for: project))
+        NotificationManager.shared.scheduleForgotToStop(projectName: project.name, hours: AppSettings.shared.forgotToStopHours)
         return entry
     }
 
@@ -36,6 +37,7 @@ final class TimeTracker {
         guard let entry = activeEntry() else { return }
         entry.end = now
         try? context.save()
+        NotificationManager.shared.cancelForgotToStop()
         if let project = entry.project {
             ToastCenter.post(title: "\(project.name) gestoppt", systemImage: "stop.fill", tint: ProjectColor.color(for: project))
         }
@@ -52,6 +54,7 @@ final class TimeTracker {
         let project = entry.project
         entry.end = now
         try? context.save()
+        NotificationManager.shared.cancelForgotToStop()
         if let project {
             ToastCenter.post(title: "\(project.name) pausiert", systemImage: "pause.fill", tint: ProjectColor.color(for: project))
         }

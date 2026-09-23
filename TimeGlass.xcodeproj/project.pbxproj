@@ -36,6 +36,7 @@
 		D2B0C3FC3A112B1E6D47DF13 /* ToastWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8A3B58B846A2413A8FF25 /* ToastWindowController.swift */; };
 		2065143351562F2EB5DF167C /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BD72DB8A42355E24B4C982 /* ToastView.swift */; };
 		6311873C50A2129A3E1C336C /* IdleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E381FB00CA72B602F101919 /* IdleDetector.swift */; };
+		6B60677F30C5E78AAE682EE9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B15E8364DA8D75C819160 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		05C8A3B58B846A2413A8FF25 /* ToastWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastWindowController.swift; sourceTree = "<group>"; };
 		42BD72DB8A42355E24B4C982 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		9E381FB00CA72B602F101919 /* IdleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleDetector.swift; sourceTree = "<group>"; };
+		0D3B15E8364DA8D75C819160 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -144,6 +146,7 @@
 				5EE2CF2CA511E7CA713F032C /* ToastCenter.swift */,
 				05C8A3B58B846A2413A8FF25 /* ToastWindowController.swift */,
 				9E381FB00CA72B602F101919 /* IdleDetector.swift */,
+				0D3B15E8364DA8D75C819160 /* NotificationManager.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				D2B0C3FC3A112B1E6D47DF13 /* ToastWindowController.swift in Sources */,
 				2065143351562F2EB5DF167C /* ToastView.swift in Sources */,
 				6311873C50A2129A3E1C336C /* IdleDetector.swift in Sources */,
+				6B60677F30C5E78AAE682EE9 /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
