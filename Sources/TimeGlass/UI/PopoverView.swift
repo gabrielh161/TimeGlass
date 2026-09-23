@@ -16,6 +16,8 @@ struct PopoverView: View {
         VStack(alignment: .leading, spacing: 15) {
             HeaderView(tracker: tracker, activeEntry: activeEntries.first, projects: projects, settings: settings)
             Divider()
+            GoalProgressView(tracker: tracker, projects: projects, settings: settings)
+            Divider()
             HistoryListView(tracker: tracker, projects: projects, activeEntry: activeEntries.first)
             Divider()
             SummaryView(tracker: tracker, projects: projects)

@@ -33,6 +33,12 @@ struct HistoryListView: View {
                 .lineLimit(1)
                 .contentShape(Rectangle())
                 .onTapGesture { sessionsProject = project }
+            if notTouchedThisWeek(project) {
+                Image(systemName: "moon.zzz")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+                    .help("Diese Woche noch nicht bearbeitet")
+            }
             Spacer()
             Group {
                 if isActive, let entry = activeEntry {
@@ -81,5 +87,13 @@ struct HistoryListView: View {
                 .buttonStyle(.borderless)
             }
         }
+    }
+
+    /// True if the project has tracked history at all, but none of it falls within the
+    /// current calendar week - i.e. it's been idle, not merely brand new.
+    private func notTouchedThisWeek(_ project: Project) -> Bool {
+        guard !project.entries.isEmpty else { return false }
+        let weekStart = SummaryPeriod.week.startDate()
+        return !project.entries.contains { $0.start >= weekStart }
     }
 }
