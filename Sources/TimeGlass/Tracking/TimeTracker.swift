@@ -95,6 +95,69 @@ final class TimeTracker {
         projects.reduce(0) { $0 + totalSeconds(for: $1, since: start, now: now) }
     }
 
+    // MARK: - Insights
+
+    /// Total seconds per calendar day across the given projects, oldest first, for the last
+    /// `days` days including today. Powers the trend chart.
+    func dailyTotals(for projects: [Project], days: Int, now: Date = .now, calendar: Calendar = .current) -> [(date: Date, seconds: TimeInterval)] {
+        let todayStart = calendar.startOfDay(for: now)
+        return (0..<days).reversed().compactMap { offset -> (Date, TimeInterval)? in
+            guard let dayStart = calendar.date(byAdding: .day, value: -offset, to: todayStart),
+                  let dayEnd = calendar.date(byAdding: .day, value: 1, to: dayStart) else { return nil }
+            let seconds = projects.reduce(0.0) { partial, project in
+                partial + project.entries.reduce(0.0) { inner, entry in
+                    let end = min(entry.end ?? now, min(dayEnd, now))
+                    let start = max(entry.start, dayStart)
+                    guard end > start else { return inner }
+                    return inner + end.timeIntervalSince(start)
+                }
+            }
+            return (dayStart, seconds)
+        }
+    }
+
+    /// Average length of completed (non-running) sessions across the given projects.
+    func averageSessionLength(for projects: [Project]) -> TimeInterval {
+        let completed = projects.flatMap(\.entries).compactMap { entry -> TimeInterval? in
+            guard let end = entry.end else { return nil }
+            return end.timeIntervalSince(entry.start)
+        }
+        guard !completed.isEmpty else { return 0 }
+        return completed.reduce(0, +) / Double(completed.count)
+    }
+
+    /// The most common rough time-of-day bucket sessions were started in, e.g. "Nachmittag".
+    func mostCommonStartBucket(for projects: [Project], calendar: Calendar = .current) -> String? {
+        let buckets = projects.flatMap(\.entries).map { entry -> String in
+            switch calendar.component(.hour, from: entry.start) {
+            case 5..<12: return "Vormittag"
+            case 12..<17: return "Nachmittag"
+            case 17..<22: return "Abend"
+            default: return "Nacht"
+            }
+        }
+        guard !buckets.isEmpty else { return nil }
+        let counts = Dictionary(grouping: buckets, by: { $0 }).mapValues(\.count)
+        return counts.max(by: { $0.value < $1.value })?.key
+    }
+
+    /// Hours + revenue (via each project's hourlyRate) per client since `start`.
+    func clientTotals(clients: [Client], since start: Date, now: Date = .now) -> [(client: Client, seconds: TimeInterval, revenue: Double)] {
+        clients.map { client in
+            var seconds: TimeInterval = 0
+            var revenue: Double = 0
+            for project in client.projects {
+                let projectSeconds = totalSeconds(for: project, since: start, now: now)
+                seconds += projectSeconds
+                if let rate = project.hourlyRate {
+                    revenue += (projectSeconds / 3600) * rate
+                }
+            }
+            return (client, seconds, revenue)
+        }
+        .sorted { $0.seconds > $1.seconds }
+    }
+
     func entries(for project: Project, since start: Date) -> [TimeEntry] {
         project.entries
             .filter { $0.start >= start }

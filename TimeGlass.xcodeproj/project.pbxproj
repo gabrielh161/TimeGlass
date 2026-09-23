@@ -40,6 +40,7 @@
 		C9C6FA80D04B4F427C20ED1B /* SoundFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E413839CA738F63EE8B64 /* SoundFeedback.swift */; };
 		C01B2C3EB38606A1AFF3E201 /* FrontmostAppObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF945B9D2EE650495E7B31EA /* FrontmostAppObserver.swift */; };
 		CC350A0711EE7BDC0A6E0A05 /* GoalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEC3964B771731F27FD2251 /* GoalProgressView.swift */; };
+		207621A76AC4D6DDDE685F7B /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759DB95F48E6260BD2E03996 /* InsightsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		149E413839CA738F63EE8B64 /* SoundFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFeedback.swift; sourceTree = "<group>"; };
 		DF945B9D2EE650495E7B31EA /* FrontmostAppObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontmostAppObserver.swift; sourceTree = "<group>"; };
 		4BEC3964B771731F27FD2251 /* GoalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressView.swift; sourceTree = "<group>"; };
+		759DB95F48E6260BD2E03996 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -139,6 +141,7 @@
 				334E8811F872E9640E028837 /* SettingsView.swift */,
 				42BD72DB8A42355E24B4C982 /* ToastView.swift */,
 				4BEC3964B771731F27FD2251 /* GoalProgressView.swift */,
+				759DB95F48E6260BD2E03996 /* InsightsView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				C9C6FA80D04B4F427C20ED1B /* SoundFeedback.swift in Sources */,
 				C01B2C3EB38606A1AFF3E201 /* FrontmostAppObserver.swift in Sources */,
 				CC350A0711EE7BDC0A6E0A05 /* GoalProgressView.swift in Sources */,
+				207621A76AC4D6DDDE685F7B /* InsightsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

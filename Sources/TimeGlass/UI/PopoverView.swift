@@ -10,6 +10,7 @@ struct PopoverView: View {
     private var projects: [Project]
     @State private var settings = AppSettings.shared
     @State private var showingSettings = false
+    @State private var showingInsights = false
 
     var body: some View {
         let tracker = TimeTracker(context: modelContext)
@@ -29,6 +30,12 @@ struct PopoverView: View {
                 .buttonStyle(.borderless)
                 Spacer()
                 Button {
+                    showingInsights = true
+                } label: {
+                    Image(systemName: "chart.bar.xaxis")
+                }
+                .buttonStyle(.borderless)
+                Button {
                     showingSettings = true
                 } label: {
                     Image(systemName: "gearshape")
@@ -41,6 +48,9 @@ struct PopoverView: View {
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
         .sheet(isPresented: $showingSettings) {
             SettingsView(settings: settings)
+        }
+        .sheet(isPresented: $showingInsights) {
+            InsightsView(tracker: tracker, projects: projects)
         }
     }
 }
