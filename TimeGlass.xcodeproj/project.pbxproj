@@ -30,6 +30,8 @@
 		8A8477BD04745A8A2E2E2B26 /* EditableTimeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677638F75B0B228D445C9F49 /* EditableTimeText.swift */; };
 		7B720CFBC61A656E7C283761 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D2B172F561030B0FAFD0F /* Client.swift */; };
 		3B8DF6B0E021015B69063D1F /* ProjectEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */; };
+		AD54558400121920F744C992 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CA7461D784607A37128D1A /* AppSettings.swift */; };
+		CF931D5B35DBF72AC754D6DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E8811F872E9640E028837 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		677638F75B0B228D445C9F49 /* EditableTimeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeText.swift; sourceTree = "<group>"; };
 		C06D2B172F561030B0FAFD0F /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditSheet.swift; sourceTree = "<group>"; };
+		98CA7461D784607A37128D1A /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		334E8811F872E9640E028837 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -116,6 +120,7 @@
 				533EEB1C17C791F6241F54F3 /* ProjectColor.swift */,
 				677638F75B0B228D445C9F49 /* EditableTimeText.swift */,
 				A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */,
+				334E8811F872E9640E028837 /* SettingsView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 				A83A4F35F5CC71A6B4820892 /* DurationFormatting.swift */,
 				C35B887198D634DE4C39DFAA /* SummaryPeriod.swift */,
 				4A2E1385EE10E9589BB18D02 /* TimeTracker.swift */,
+				98CA7461D784607A37128D1A /* AppSettings.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -264,6 +270,8 @@
 				8A8477BD04745A8A2E2E2B26 /* EditableTimeText.swift in Sources */,
 				7B720CFBC61A656E7C283761 /* Client.swift in Sources */,
 				3B8DF6B0E021015B69063D1F /* ProjectEditSheet.swift in Sources */,
+				AD54558400121920F744C992 /* AppSettings.swift in Sources */,
+				CF931D5B35DBF72AC754D6DD /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

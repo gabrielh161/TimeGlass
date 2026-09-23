@@ -4,6 +4,7 @@ struct HeaderView: View {
     let tracker: TimeTracker
     let activeEntry: TimeEntry?
     let projects: [Project]
+    let settings: AppSettings
     @State private var projectName: String = ""
 
     var body: some View {

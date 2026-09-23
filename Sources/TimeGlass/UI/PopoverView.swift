@@ -8,23 +8,37 @@ struct PopoverView: View {
     private var activeEntries: [TimeEntry]
     @Query(sort: \Project.createdAt, order: .reverse)
     private var projects: [Project]
+    @State private var settings = AppSettings.shared
+    @State private var showingSettings = false
 
     var body: some View {
         let tracker = TimeTracker(context: modelContext)
         VStack(alignment: .leading, spacing: 15) {
-            HeaderView(tracker: tracker, activeEntry: activeEntries.first, projects: projects)
+            HeaderView(tracker: tracker, activeEntry: activeEntries.first, projects: projects, settings: settings)
             Divider()
             HistoryListView(tracker: tracker, projects: projects, activeEntry: activeEntries.first)
             Divider()
             SummaryView(tracker: tracker, projects: projects)
             Divider()
-            Button("Beenden") {
-                NSApplication.shared.terminate(nil)
+            HStack {
+                Button("Beenden") {
+                    NSApplication.shared.terminate(nil)
+                }
+                .buttonStyle(.borderless)
+                Spacer()
+                Button {
+                    showingSettings = true
+                } label: {
+                    Image(systemName: "gearshape")
+                }
+                .buttonStyle(.borderless)
             }
-            .buttonStyle(.borderless)
         }
         .padding(18)
         .frame(width: 320)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
+        .sheet(isPresented: $showingSettings) {
+            SettingsView(settings: settings)
+        }
     }
 }
