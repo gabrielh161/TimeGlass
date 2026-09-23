@@ -38,6 +38,7 @@
 		6311873C50A2129A3E1C336C /* IdleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E381FB00CA72B602F101919 /* IdleDetector.swift */; };
 		6B60677F30C5E78AAE682EE9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B15E8364DA8D75C819160 /* NotificationManager.swift */; };
 		C9C6FA80D04B4F427C20ED1B /* SoundFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E413839CA738F63EE8B64 /* SoundFeedback.swift */; };
+		C01B2C3EB38606A1AFF3E201 /* FrontmostAppObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF945B9D2EE650495E7B31EA /* FrontmostAppObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		9E381FB00CA72B602F101919 /* IdleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleDetector.swift; sourceTree = "<group>"; };
 		0D3B15E8364DA8D75C819160 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		149E413839CA738F63EE8B64 /* SoundFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFeedback.swift; sourceTree = "<group>"; };
+		DF945B9D2EE650495E7B31EA /* FrontmostAppObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontmostAppObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -150,6 +152,7 @@
 				9E381FB00CA72B602F101919 /* IdleDetector.swift */,
 				0D3B15E8364DA8D75C819160 /* NotificationManager.swift */,
 				149E413839CA738F63EE8B64 /* SoundFeedback.swift */,
+				DF945B9D2EE650495E7B31EA /* FrontmostAppObserver.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				6311873C50A2129A3E1C336C /* IdleDetector.swift in Sources */,
 				6B60677F30C5E78AAE682EE9 /* NotificationManager.swift in Sources */,
 				C9C6FA80D04B4F427C20ED1B /* SoundFeedback.swift in Sources */,
+				C01B2C3EB38606A1AFF3E201 /* FrontmostAppObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

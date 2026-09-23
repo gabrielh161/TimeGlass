@@ -6,6 +6,7 @@ struct HeaderView: View {
     let projects: [Project]
     let settings: AppSettings
     @State private var projectName: String = ""
+    @State private var frontmostApp = FrontmostAppObserver.shared
 
     var body: some View {
         Group {
@@ -106,6 +107,30 @@ struct HeaderView: View {
                     }
                 }
             }
+            if let match = frontmostAppSuggestion {
+                Button {
+                    tracker.start(projectNamed: match.name)
+                } label: {
+                    Label("Vorschlag anhand aktiver App: \(match.name)", systemImage: "sparkles")
+                }
+                .buttonStyle(.borderless)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    /// Suggests an existing project whose name matches the frontmost application's name, e.g.
+    /// suggesting a "Lightroom" project while Lightroom is in front. See FrontmostAppObserver
+    /// for why this is app-name-based rather than deeper window/document inspection.
+    private var frontmostAppSuggestion: Project? {
+        guard settings.frontmostAppSuggestionEnabled,
+              projectName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              let appName = frontmostApp.frontmostAppName else { return nil }
+        let recent = tracker.mostRecentProject()
+        return projects.first {
+            ($0.name.localizedCaseInsensitiveContains(appName) || appName.localizedCaseInsensitiveContains($0.name))
+                && $0.id != recent?.id
         }
     }
 
