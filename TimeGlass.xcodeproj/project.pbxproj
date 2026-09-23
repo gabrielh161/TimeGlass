@@ -28,6 +28,8 @@
 		F89972A7482495E564BF290A /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A43BA402C9490D4D334CC45 /* SmokeTests.swift */; };
 		FA584E1B8084FCED524F6E94 /* ProjectColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EEB1C17C791F6241F54F3 /* ProjectColor.swift */; };
 		8A8477BD04745A8A2E2E2B26 /* EditableTimeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677638F75B0B228D445C9F49 /* EditableTimeText.swift */; };
+		7B720CFBC61A656E7C283761 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D2B172F561030B0FAFD0F /* Client.swift */; };
+		3B8DF6B0E021015B69063D1F /* ProjectEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		FE609591825292D61C1D95E9 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
 		533EEB1C17C791F6241F54F3 /* ProjectColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectColor.swift; sourceTree = "<group>"; };
 		677638F75B0B228D445C9F49 /* EditableTimeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeText.swift; sourceTree = "<group>"; };
+		C06D2B172F561030B0FAFD0F /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -111,6 +115,7 @@
 				38EA963C107A1D09EF1AD572 /* SummaryView.swift */,
 				533EEB1C17C791F6241F54F3 /* ProjectColor.swift */,
 				677638F75B0B228D445C9F49 /* EditableTimeText.swift */,
+				A47DEB9EC79374B83DF90699 /* ProjectEditSheet.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			children = (
 				DE9D896058ED0EEACE9F206C /* Project.swift */,
 				0F1E02A499FCD9454320E3D7 /* TimeEntry.swift */,
+				C06D2B172F561030B0FAFD0F /* Client.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +262,8 @@
 				86FB40D45E4D47AF26E44A46 /* TimeTracker.swift in Sources */,
 				FA584E1B8084FCED524F6E94 /* ProjectColor.swift in Sources */,
 				8A8477BD04745A8A2E2E2B26 /* EditableTimeText.swift in Sources */,
+				7B720CFBC61A656E7C283761 /* Client.swift in Sources */,
+				3B8DF6B0E021015B69063D1F /* ProjectEditSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

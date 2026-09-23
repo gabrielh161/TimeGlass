@@ -8,4 +8,9 @@ enum DurationFormatting {
         let secs = total % 60
         return String(format: "%d:%02d:%02d", hours, minutes, secs)
     }
+
+    /// Formats a duration given in hours (e.g. a budget) compactly, e.g. "3,5 h".
+    static func formatHours(_ hours: Double) -> String {
+        String(format: "%.1f h", hours).replacingOccurrences(of: ".", with: ",")
+    }
 }

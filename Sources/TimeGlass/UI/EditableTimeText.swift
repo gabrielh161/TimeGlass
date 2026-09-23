@@ -72,3 +72,47 @@ struct EditableElapsedTimeText: View {
         }
     }
 }
+
+/// Shows an optional free-text note; double-click (or tapping the placeholder) reveals a text
+/// field to edit it. An empty note commits as nil.
+struct EditableNoteText: View {
+    let note: String?
+    let tint: Color
+    let onCommit: (String?) -> Void
+
+    @State private var isEditing = false
+    @State private var draft: String = ""
+
+    var body: some View {
+        if isEditing {
+            HStack(spacing: 4) {
+                TextField("Notiz…", text: $draft)
+                    .textFieldStyle(.roundedBorder)
+                    .font(.caption2)
+                    .onSubmit(commit)
+                Button {
+                    commit()
+                } label: {
+                    Image(systemName: "checkmark.circle.fill")
+                }
+                .buttonStyle(.borderless)
+                .foregroundStyle(tint)
+            }
+        } else {
+            Text(note?.isEmpty == false ? note! : "+ Notiz")
+                .font(.caption2)
+                .foregroundStyle(note?.isEmpty == false ? .secondary : .tertiary)
+                .lineLimit(1)
+                .contentShape(Rectangle())
+                .onTapGesture(count: 2) {
+                    draft = note ?? ""
+                    isEditing = true
+                }
+        }
+    }
+
+    private func commit() {
+        onCommit(draft.trimmingCharacters(in: .whitespacesAndNewlines))
+        isEditing = false
+    }
+}

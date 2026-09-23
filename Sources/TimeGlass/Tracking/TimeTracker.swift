@@ -89,4 +89,51 @@ final class TimeTracker {
         let all = (try? context.fetch(FetchDescriptor<Project>())) ?? []
         return all.first { $0.name.caseInsensitiveCompare(name) == .orderedSame }
     }
+
+    // MARK: - Clients
+
+    func allClients() -> [Client] {
+        let descriptor = FetchDescriptor<Client>(sortBy: [SortDescriptor(\.name)])
+        return (try? context.fetch(descriptor)) ?? []
+    }
+
+    private func findClient(named name: String) -> Client? {
+        let all = (try? context.fetch(FetchDescriptor<Client>())) ?? []
+        return all.first { $0.name.caseInsensitiveCompare(name) == .orderedSame }
+    }
+
+    /// Assigns the project to a client, finding an existing client by name (case-insensitive)
+    /// or creating a new one. Passing nil or an empty/whitespace-only name clears the client.
+    func setClient(for project: Project, named rawName: String?, now: Date = .now) {
+        let trimmed = rawName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        guard !trimmed.isEmpty else {
+            project.client = nil
+            try? context.save()
+            return
+        }
+        let client = findClient(named: trimmed) ?? {
+            let created = Client(name: trimmed, createdAt: now)
+            context.insert(created)
+            return created
+        }()
+        project.client = client
+        try? context.save()
+    }
+
+    // MARK: - Project attributes
+
+    func updateProjectAttributes(_ project: Project, hourlyRate: Double?, tags: [String], budgetHours: Double?) {
+        project.hourlyRate = hourlyRate
+        project.tags = tags
+        project.budgetHours = budgetHours
+        try? context.save()
+    }
+
+    // MARK: - Notes
+
+    func updateNote(_ entry: TimeEntry, note: String?) {
+        let trimmed = note?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        entry.note = trimmed.isEmpty ? nil : trimmed
+        try? context.save()
+    }
 }

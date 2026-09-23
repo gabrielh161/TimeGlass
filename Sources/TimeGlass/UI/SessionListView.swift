@@ -6,6 +6,7 @@ struct SessionListView: View {
 
     @State private var entries: [TimeEntry] = []
     @State private var showingAddForm = false
+    @State private var showingEditSheet = false
     @State private var newStart = Date()
     @State private var newEnd = Date()
     @Environment(\.dismiss) private var dismiss
@@ -18,8 +19,23 @@ struct SessionListView: View {
                     .frame(width: 10, height: 10)
                 Text(project.name).font(.headline)
                 Spacer()
+                Button {
+                    showingEditSheet = true
+                } label: {
+                    Image(systemName: "pencil")
+                }
+                .buttonStyle(.borderless)
                 Button("Fertig") { dismiss() }
                     .buttonStyle(.borderless)
+            }
+
+            if let budget = project.budgetHours {
+                let trackedHours = tracker.totalSeconds(for: project, since: .distantPast) / 3600
+                if trackedHours > budget {
+                    Label("Budget von \(DurationFormatting.formatHours(budget)) überschritten (\(DurationFormatting.formatHours(trackedHours)) getrackt)", systemImage: "exclamationmark.triangle.fill")
+                        .font(.caption2)
+                        .foregroundStyle(.orange)
+                }
             }
 
             if entries.isEmpty {
@@ -56,6 +72,9 @@ struct SessionListView: View {
         .frame(width: 320)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
         .onAppear(perform: reload)
+        .sheet(isPresented: $showingEditSheet) {
+            ProjectEditSheet(tracker: tracker, project: project)
+        }
     }
 
     private func reload() {
@@ -65,37 +84,45 @@ struct SessionListView: View {
 
     @ViewBuilder
     private func row(for entry: TimeEntry) -> some View {
-        HStack(spacing: 8) {
-            EditableTimeText(value: entry.start, tint: ProjectColor.color(for: project)) { newValue in
-                if tracker.updateEntry(entry, start: newValue, end: entry.end) {
-                    reload()
-                }
-            }
-
-            if let end = entry.end {
-                Text("–").foregroundStyle(.secondary)
-                EditableTimeText(value: end, tint: ProjectColor.color(for: project)) { newValue in
-                    if tracker.updateEntry(entry, start: entry.start, end: newValue) {
+        VStack(alignment: .leading, spacing: 3) {
+            HStack(spacing: 8) {
+                EditableTimeText(value: entry.start, tint: ProjectColor.color(for: project)) { newValue in
+                    if tracker.updateEntry(entry, start: newValue, end: entry.end) {
                         reload()
                     }
                 }
-            } else {
-                PulsingDot()
-                Text("läuft")
-                    .foregroundStyle(.green)
+
+                if let end = entry.end {
+                    Text("–").foregroundStyle(.secondary)
+                    EditableTimeText(value: end, tint: ProjectColor.color(for: project)) { newValue in
+                        if tracker.updateEntry(entry, start: entry.start, end: newValue) {
+                            reload()
+                        }
+                    }
+                } else {
+                    PulsingDot()
+                    Text("läuft")
+                        .foregroundStyle(.green)
+                }
+
+                Spacer()
+
+                Button {
+                    tracker.deleteEntry(entry)
+                    reload()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+                .buttonStyle(.borderless)
             }
+            .font(.caption)
 
-            Spacer()
-
-            Button {
-                tracker.deleteEntry(entry)
+            EditableNoteText(note: entry.note, tint: ProjectColor.color(for: project)) { newNote in
+                tracker.updateNote(entry, note: newNote)
                 reload()
-            } label: {
-                Image(systemName: "xmark")
             }
-            .buttonStyle(.borderless)
+            .padding(.leading, 2)
         }
-        .font(.caption)
     }
 
     private var addForm: some View {
