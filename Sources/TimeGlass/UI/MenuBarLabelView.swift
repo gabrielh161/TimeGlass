@@ -21,7 +21,7 @@ struct MenuBarLabelView: View {
                     let goalReached = goalSeconds > 0 && todaySeconds >= goalSeconds
                     let progress = goalSeconds > 0 ? min(todaySeconds / goalSeconds, 1) : 0
                     HStack(spacing: 4) {
-                        goalRing(tint: goalReached ? .green : tint, progress: progress)
+                        icon(tint: goalReached ? .green : tint, progress: progress, filled: true)
                         if !settings.compactMode {
                             Text(runningLabel(entry: entry, project: project, todaySeconds: todaySeconds, goalSeconds: goalSeconds, now: context.date))
                         }
@@ -33,7 +33,7 @@ struct MenuBarLabelView: View {
                 let todaySeconds = tracker.totalSecondsAcrossProjects(projects, since: SummaryPeriod.today.startDate())
                 let goalReached = goalSeconds > 0 && todaySeconds >= goalSeconds
                 let progress = goalSeconds > 0 ? min(todaySeconds / goalSeconds, 1) : 0
-                goalRing(tint: goalReached ? .green : .secondary, progress: progress)
+                icon(tint: goalReached ? .green : .primary, progress: progress, filled: false)
             }
         }
     }
@@ -47,21 +47,24 @@ struct MenuBarLabelView: View {
         return "\(project.name) · \(DurationFormatting.format(elapsed))"
     }
 
-    /// Small ring baked into the menu bar icon: its color reflects the running project (or a
-    /// neutral secondary tone when idle), it fills up as today's goal progress, and turns
-    /// green once the daily goal is reached.
-    private func goalRing(tint: Color, progress: Double) -> some View {
+    /// Menu bar icon: always a fully opaque SF Symbol as the base (so there is never a blank/
+    /// invisible icon), tinted by project color while running or neutral while idle. The goal
+    /// progress ring is layered on top only once there is real progress to show (>0), so it
+    /// can never be the *only* thing drawn - a fully transparent ring at 0% progress used to be
+    /// the entire icon and was invisible in the menu bar.
+    private func icon(tint: Color, progress: Double, filled: Bool) -> some View {
         ZStack {
-            Circle()
-                .stroke(tint.opacity(0.28), lineWidth: 2)
-            Circle()
-                .trim(from: 0, to: progress)
-                .stroke(tint, style: StrokeStyle(lineWidth: 2, lineCap: .round))
-                .rotationEffect(.degrees(-90))
-            Circle()
-                .fill(tint)
-                .frame(width: 4, height: 4)
+            Image(systemName: filled ? "timer.circle.fill" : "timer")
+                .font(.system(size: filled ? 15 : 13, weight: .medium))
+                .foregroundStyle(tint)
+            if progress > 0 {
+                Circle()
+                    .trim(from: 0, to: progress)
+                    .stroke(tint, style: StrokeStyle(lineWidth: 1.5, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                    .frame(width: 18, height: 18)
+            }
         }
-        .frame(width: 13, height: 13)
+        .frame(width: 18, height: 18)
     }
 }
