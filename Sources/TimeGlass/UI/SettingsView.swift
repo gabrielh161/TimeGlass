@@ -4,7 +4,7 @@ import SwiftUI
 /// bar behaviour, sound, countdown mode, reminders).
 struct SettingsView: View {
     @Bindable var settings: AppSettings
-    @Environment(\.dismiss) private var dismiss
+    let onDone: () -> Void
 
     @State private var dailyGoalText: String = ""
     @State private var forgotToStopText: String = ""
@@ -14,7 +14,7 @@ struct SettingsView: View {
             HStack {
                 Text("Einstellungen").font(.headline)
                 Spacer()
-                Button("Fertig") { commitTextFields(); dismiss() }
+                Button("Fertig") { commitTextFields(); onDone() }
                     .buttonStyle(.borderless)
             }
 

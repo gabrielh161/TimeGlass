@@ -7,7 +7,7 @@ import Charts
 struct InsightsView: View {
     let tracker: TimeTracker
     let projects: [Project]
-    @Environment(\.dismiss) private var dismiss
+    let onDone: () -> Void
 
     private enum Tab: String, CaseIterable {
         case trend = "Trend"
@@ -22,7 +22,7 @@ struct InsightsView: View {
             HStack {
                 Text("Einblicke").font(.headline)
                 Spacer()
-                Button("Fertig") { dismiss() }
+                Button("Fertig") { onDone() }
                     .buttonStyle(.borderless)
             }
 
